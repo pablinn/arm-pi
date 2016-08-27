@@ -1,24 +1,45 @@
 #!/usr/bin/python
-# All SSH libraries for Python are junk (2011-10-13).
-# Too low-level (libssh2), too buggy (paramiko), too complicated
-# (both), too poor in features (no use of the agent, for instance)
-# Here is the right solution today:
-import subprocess
+import os
 import sys
+from subprocess import Popen, PIPE
 
-host="pi@192.168.43.222"
 
-# Ports are handled in ~/.ssh/config since we use OpenSSH
-COMMAND="uname -a"
-ssh = subprocess.Popen(["ssh", "%s" % host, COMMAND],
-			shell=False,
-			stdout=subprocess.PIPE,
-			stderr=subprocess.PIPE)
+arch=sys.argv[1]+'/'+sys.argv[2]
 
-result = ssh.stdout.readlines()
-if result == []:
-	error = ssh.stderr.readlines()
-	print >>sys.stderr, "ERROR: %s" % error
-else:
-	print result
+cc_as="arm-linux-gnueabihf-as"
+cc_gcc="arm-linux-gnueabihf-gcc"
 
+
+proc = Popen([cc_as ,'-mthumb', '-o', arch+'.o' , arch + '.s'] , stdin = PIPE , stdout = PIPE)
+proc.stdout.readline()
+proc.stdout.flush()
+
+
+proc1=Popen([cc_gcc,'-o',arch,arch+'.o'], stdin = PIPE, stdout = PIPE)
+proc1.stdout.readline()
+proc1.stdout.flush()
+
+proc4=Popen(['rm','-vf',sys.argv[1]+'/*.o'])
+#proc4.stdout.readline()
+#proc4.stdout.flush()
+
+
+host='pi@192.168.43.222'
+destino=':/home/pi/pru-arm'
+
+print 'scp', sys.argv[2] ,  host +  destino
+print 'rm','-vf',sys.argv[1]+'/*.o'
+
+proc3 = Popen(['scp', sys.argv[2] ,  host +  destino] , stdout = PIPE, stdin = PIPE)
+proc3.stdout.readline()
+proc3.stdout.flush()
+
+
+
+""" arm-linux-gnueabihf-as -mthumb -o %e.o %f
+arm-linux-gnueabihf-gcc -o %e %e.o 
+arm-linux-gnueabihf-gcc -o %e %e.c 
+rm -vf *.o
+envia a la pi
+entrara y lo ejecutara
+"""
