@@ -19,8 +19,11 @@ path/arm-pi/arm-pi.py %d %e c -->para compilar un C y emu
 
 
 Se puede usar desde la tty de linux
+
 ./arm-pi.py %1 %2 %3 %4
+
 ./arm-pi /home/usr prueba s rpi
+
 ./arm-pi /home/usr prueba c rpi
 
 %1-path
@@ -30,7 +33,9 @@ Se puede usar desde la tty de linux
  
       
 Usa el cross-compiler instalado sino instalar alguno
+
 sudo apt-get install arm-linux-gnueabihf  -> para procesadores ARM
+
 sudo apt-get install arm-linux-gnueabi
 
 una vez compilado lo sube a la rpi pide la contraseña de la sesion ssh
@@ -38,7 +43,9 @@ una vez compilado lo sube a la rpi pide la contraseña de la sesion ssh
 usa scp archivo ---> shell remota
 
 Hay que editar en el script (no configurable es mas facil desde el script)
+
 host="usr@ip  o  usr@dominio"
+
 destino=carpeta de destino  /home/pi generalmente
 
 
