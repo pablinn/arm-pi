@@ -51,6 +51,8 @@ host="usr@ip  o  usr@dominio"
 
 destino=carpeta de destino  /home/pi generalmente
 
+web-blog
+http://ret-catriel.blogspot.com.ar/2016/08/shellcode-en-arm-poniendome-al-dia-con.html
 
 
 
