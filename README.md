@@ -13,9 +13,12 @@ Se puede usar desde la tty de linux
 ./arm-pi.py %1 %2 %3 %4
 
 %1 ->path
+
 %2 ->nombre_archivo
+
 %3 -> s codigo en assembler ARM 
       c codigo en c ARM
+      
 %4  -->rpi  (usa la sheel remota de raspbian para subirlo)
     
       
