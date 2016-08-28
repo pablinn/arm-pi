@@ -7,12 +7,16 @@ Geany es un excelente editor de texto con sintaxis de color.
 Se agrega como un comando y permite compilar codigo en ensamblador o C/C++ para ARM
 
 Comando a agregar a geany
+
 path/arm-pi/arm-pi.py %d %e s rpi  -->para compilar un assembler y subirlo a una rpi
+
 path/arm-pi/arm-pi.py %d %e c rpi  -->para compilar un C y subirlo a una rpi
 
 
 path/arm-pi/arm-pi.py %d %e s -->para compilar un assembler y emu
+
 path/arm-pi/arm-pi.py %d %e c -->para compilar un C y emu
+
 
 Se puede usar desde la tty de linux
 ./arm-pi.py %1 %2 %3 %4
