@@ -27,8 +27,11 @@ Se puede usar desde la tty de linux
 ./arm-pi /home/usr prueba c rpi
 
 %1-path
+
 %2-nombre_archivo
+
 %3-s o c (codigo en assembler ARM o codigo en c ARM)
+
 %4-rpi  (usa la sheel remota de raspbian para subirlo).
  
       
